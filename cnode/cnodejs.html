@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cnodejs网站</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 静态大概结构 -->
+    <!-- <div id="app" class="app">
+        ----头部----
+        <div class="head">cnodejs</div>
+        ----小导航----
+        <div class="cates">
+            <span>全部</span>
+            <span>精华</span>
+            <span>分享</span>
+            <span>问答</span>
+            <span>招聘</span>
+        </div>
+        ----主体内容----
+        <div class="article">
+            <img src="">
+            <div class="num">123</div>
+            <span class="label">置顶</span>
+            <span class="tittle">哈哈哈哈哈哈哈哈哈</span>
+            <span class="time">1天前</span>
+        </div>
+        ----翻页----
+        <div class="pages">
+            <span><<</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>...</span>
+            <span>>></span>
+        </div>
+    </div> -->
+
+    <!-- 动态加载 -->
+    <div id="app" class="app">
+        <!-- 头部 -->
+        <div class="head">cnodejs</div>
+
+        <!-- 分类导航 -->
+        <cn-filter :list="cates" v-model="tab"></cn-filter>
+
+        <!-- 主体内容 -->
+        <div v-if="loaded" v-for="item in artList" :key="item.id">
+            <cn-article :article="item"></cn-article>
+        </div>
+
+        <!-- 底部翻页 -->
+        <cn-page v-model="page"></cn-page>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- 组件引入 -->
+    <script src='js/cn-filter.js'></script>
+    <script src='js/cn-article.js'></script>
+    <script src='js/cn-page.js'></script>
+    <script src='js/cn-loading.js'></script>
+    
+    <script src='js/app.js'></script>
+    <script src='js/fetch.js'></script>
+
+</body>
+</html>
